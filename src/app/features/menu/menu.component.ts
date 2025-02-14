@@ -6,6 +6,7 @@ import { ShopInfoCardComponent } from '../../shared/components/shop-info-card/sh
 import { MenuHeaderComponent } from './menu-header/menu-header.component';
 import { ImportsModule } from '../../imports-primeng';
 import { MenuSidebarComponent } from './menu-sidebar/menu-sidebar.component';
+import { UserProfileComponent } from "./user-profile/user-profile.component";
 
 @Component({
   selector: 'app-menu',
@@ -14,8 +15,8 @@ import { MenuSidebarComponent } from './menu-sidebar/menu-sidebar.component';
     ProductComponent,
     ShopInfoCardComponent,
     MenuHeaderComponent,
-    MenuSidebarComponent,
-  ],
+    UserProfileComponent
+],
   templateUrl: './menu.component.html',
 })
 export class MenuComponent implements OnInit {
