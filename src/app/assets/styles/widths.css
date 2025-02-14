@@ -1,0 +1,112 @@
+/* widths.css */
+
+/* Percentage-based widths */
+.w-25 {
+  width: 25% !important;
+}
+
+.w-33 {
+  width: 33.333% !important;
+}
+
+.w-50 {
+  width: 50% !important;
+}
+
+.w-66 {
+  width: 66.666% !important;
+}
+
+.w-75 {
+  width: 75% !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+/* Fixed widths */
+.w-auto {
+  width: auto !important;
+}
+
+.w-0 {
+  width: 0 !important;
+}
+
+/* You can add more specific widths if needed */
+.w-1 {
+  width: 1rem !important;
+}
+
+.w-2 {
+  width: 2rem !important;
+}
+
+.w-3 {
+  width: 3rem !important;
+}
+
+.w-4 {
+  width: 4rem !important;
+}
+
+.w-5 {
+  width: 5rem !important;
+}
+
+/* Max-widths */
+.mw-100 {
+  max-width: 100% !important;
+}
+
+.mw-75 {
+  max-width: 75% !important;
+}
+
+.mw-50 {
+  max-width: 50% !important;
+}
+
+/* Viewport widths */
+.vw-100 {
+  width: 100vw !important;
+}
+
+.min-vw-100 {
+  min-width: 100vw !important;
+}
+
+/* Utility class for responsiveness */
+.w-full {
+  width: 100% !important;
+}
+
+.w-screen {
+  width: 100vw !important;
+}
+
+/* You can add responsive classes if needed */
+@media (min-width: 768px) {
+  .w-md-50 {
+    width: 50% !important;
+  }
+
+  .w-md-100 {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .w-lg-25 {
+    width: 25% !important;
+  }
+
+  .w-lg-50 {
+    width: 50% !important;
+  }
+
+  .w-lg-75 {
+    width: 75% !important;
+  }
+}

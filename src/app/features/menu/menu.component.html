@@ -18,9 +18,9 @@
     ngClass="p-drawer"
     [(visible)]="isVisible"
     position="right"
-    [appendTo]="container.nativeElement"
-    [style]="{ position: 'absolute', width:'100%'}"
+    [appendTo]="container?.nativeElement"
+    [style]="{ position: 'absolute', width:'100%', 'max-height': '100vp'}"
   >
-    <app-user-profile></app-user-profile>
-  </p-drawer>
+  <app-nav-bar></app-nav-bar>
+</p-drawer>
 </main>

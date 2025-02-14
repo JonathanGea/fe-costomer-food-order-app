@@ -7,6 +7,14 @@ import { CardModule } from 'primeng/card';
 import { DrawerModule } from 'primeng/drawer';
 import { MenuModule } from 'primeng/menu';
 import { ToastModule } from 'primeng/toast';
+import { AvatarModule } from 'primeng/avatar';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { ToolbarModule } from 'primeng/toolbar';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { InputTextModule } from 'primeng/inputtext';
+
+
+
 @NgModule({
   imports: [
     FormsModule,
@@ -16,6 +24,11 @@ import { ToastModule } from 'primeng/toast';
     DrawerModule,
     MenuModule,
     ToastModule,
+    AvatarModule,
+    PanelMenuModule,
+    ToolbarModule,
+    FloatLabelModule,
+    InputTextModule
   ],
   exports: [
     FormsModule,
@@ -24,7 +37,12 @@ import { ToastModule } from 'primeng/toast';
     CardModule,
     DrawerModule,
     MenuModule,
-    ToastModule
+    ToastModule,
+    AvatarModule,
+    PanelMenuModule,
+    ToolbarModule,
+    FloatLabelModule,
+    InputTextModule
   ],
   providers: [MessageService],
 })

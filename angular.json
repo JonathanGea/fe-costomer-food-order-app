@@ -23,11 +23,18 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/assets/"
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/assets/styles/flex.css",
+              "src/app/assets/styles/justify.css",
+              "src/app/assets/styles/align.css",
+              "src/app/assets/styles/widths.css",
+              "src/app/assets/styles/spacing.css"
+
             ],
             "scripts": []
           },
@@ -92,8 +99,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/css/spacing.css",
-              "src/assets/css/font.css"
+              "src/app/assets/styles/flex.css",
+              "src/app/assets/styles/justify.css",
+              "src/app/assets/styles/align.css",
+              "src/app/assets/styles/widths.css",
+              "src/app/assets/styles/spacing.css"
+
             ],
             "scripts": []
           }

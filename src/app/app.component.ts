@@ -1,33 +1,39 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ImportsModule } from './imports-primeng';
-import { MenuComponent } from './features/menu/menu.component';
+import { RouterOutlet } from '@angular/router';
+import {  MenuComponent } from './features/menu/menu.component';
+import { ContainerService } from './shared/services/container.service';
 
 @Component({
   selector: 'app-root',
-  imports: [ImportsModule, MenuComponent],
-  styles: [`
-    .container {
-      padding: 12px;
-      max-width: 500px;
-      min-height: 100%;
-      margin: 0 auto;
-      overflow: hidden;
-      border: 1px solid #eee;
-      background-color: #fafafa;
-      position: relative;
-    }
-  `],
+  imports: [RouterOutlet],
+  styles: [
+    `
+      .container {
+        padding: 12px;
+        max-width: 500px;
+        min-height: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        border: 1px solid #eee;
+        background-color: #fafafa;
+        position: relative;
+      }
+    `,
+  ],
   template: `
     <div class="container" #container>
-      <app-menu [container]="containerElement"></app-menu>
+      <router-outlet />
+      <!-- <app-menu [container]="containerElement"></app-menu> -->
     </div>
   `,
   standalone: true,
 })
 export class AppComponent {
-  @ViewChild('container', { static: true }) container!: ElementRef;
+  @ViewChild('container', { static: false }) container!: ElementRef;
 
-  get containerElement(): ElementRef {
-    return this.container;
+  constructor(private containerService: ContainerService) {}
+
+  ngAfterViewInit() {
+    this.containerService.setContainer(this.container);
   }
 }

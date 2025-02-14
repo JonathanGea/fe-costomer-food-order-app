@@ -1,0 +1,19 @@
+<div class="user-profile-container">
+    <div class="user-info">
+      <p-avatar
+        image="{{ userAvatar }}"
+        size="xlarge"
+        shape="circle"
+        styleClass="mr-2"
+      ></p-avatar>
+      <span class="user-name">{{ userName }}</span>
+    </div>
+  </div>
+  
+  <div class="card flex flex-col items-center">
+    <div class="card flex justify-center">
+      <p-toast />
+      <p-panelmenu [model]="items" styleClass="w-full md:w-80" />
+    </div>
+  </div>
+  

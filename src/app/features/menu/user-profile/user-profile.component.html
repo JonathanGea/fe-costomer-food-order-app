@@ -1,0 +1,77 @@
+<div>
+  <p-toast></p-toast>
+</div>
+
+<p-toolbar>
+  <ng-template #start>
+    <p-button icon="pi pi-arrow-left" class="mr-2" text severity="secondary" 
+    (onClick)="goBack()"/>
+  </ng-template>
+  <ng-template #center>
+    <span><strong>Profile</strong></span>
+  </ng-template>
+  <ng-template #end> </ng-template>
+</p-toolbar>
+
+<div class="d-flex justify-center m-3">
+    <p-avatar
+        image="{{ userAvatar }}"
+        size="xlarge"
+        shape="circle"
+        styleClass="mr-2"
+      ></p-avatar>
+</div>
+
+<div class="p-1">
+  <p-floatlabel variant="in" class="my-2 w-100">
+    <input
+      pInputText
+      id="name"
+      class="w-100"
+      [(ngModel)]="name"
+      autocomplete="off"
+    />
+    <label for="name">Your Name</label>
+  </p-floatlabel>
+  <p-floatlabel variant="in" class="my-2 w-100">
+    <input
+      pInputText
+      type="email"
+      id="email"
+      class="w-100"
+      [(ngModel)]="email"
+      autocomplete="off"
+
+    />
+    <label for="email">email</label>
+  </p-floatlabel>
+
+  <div>
+    <p-button
+      *ngIf="!isEditing"
+      (click)="toggleEdit()"
+      label="Edit Profile"
+      severity="secondary"
+      styleClass="w-100"
+      class="w-100"
+    ></p-button>
+    <ng-container *ngIf="isEditing">
+      <div style="display: flex; justify-content: center" class="gap-2">
+        <p-button
+          (click)="saveProfile()"
+          label="Save"
+          severity="success"
+          styleClass="w-100"
+          class="w-100"
+        ></p-button>
+        <p-button
+          (click)="cancelEdit()"
+          label="Cancel"
+          severity="danger"
+          styleClass="w-100"
+          class="w-100"
+        ></p-button>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -5,8 +5,8 @@ import { ProductComponent } from '../../shared/components/product/product.compon
 import { ShopInfoCardComponent } from '../../shared/components/shop-info-card/shop-info-card.component';
 import { MenuHeaderComponent } from './menu-header/menu-header.component';
 import { ImportsModule } from '../../imports-primeng';
-import { MenuSidebarComponent } from './menu-sidebar/menu-sidebar.component';
-import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { ContainerService } from '../../shared/services/container.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-menu',
@@ -15,16 +15,24 @@ import { UserProfileComponent } from "./user-profile/user-profile.component";
     ProductComponent,
     ShopInfoCardComponent,
     MenuHeaderComponent,
-    UserProfileComponent
+    NavBarComponent
 ],
   templateUrl: './menu.component.html',
 })
 export class MenuComponent implements OnInit {
-  @Input() container!: ElementRef;  
   isVisible: boolean = false;
   products: Product[] = [];
 
+  container: ElementRef | null = null;
 
+  constructor(private containerService: ContainerService,private productService: ProductService) {}
+
+  ngOnInit() {
+    this.containerService.container$.subscribe(container => {
+      this.container = container;
+    });
+    this.getProducts();
+  }
 
   ngAfterViewInit() {
 
@@ -34,11 +42,6 @@ export class MenuComponent implements OnInit {
     this.isVisible = !this.isVisible;
   }
 
-  constructor(private productService: ProductService) {}
-
-  ngOnInit(): void {
-    this.getProducts();
-  }
 
   getProducts() {
     this.productService.getProducts().subscribe({
