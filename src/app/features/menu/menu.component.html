@@ -1,5 +1,5 @@
 <main>
-  <app-menu-header></app-menu-header>
+  <app-menu-header (toggleDrawer)="toggleDrawer()"></app-menu-header>
   <section #banner>
     <div style="margin-top: 72px">
       <h2>Hai budi</h2>
@@ -13,4 +13,14 @@
     <app-product [product]="product"></app-product>
     }
   </div>
+
+  <p-drawer
+    ngClass="p-drawer"
+    [(visible)]="isVisible"
+    position="right"
+    [appendTo]="container.nativeElement"
+    [style]="{ position: 'absolute' }"
+  >
+    <app-menu-sidebar></app-menu-sidebar>
+  </p-drawer>
 </main>

@@ -1,16 +1,6 @@
 <div class="container" #container>
-  <app-menu></app-menu>
+  <app-menu [container]="containerElement"></app-menu>
   <footer>
     <p>&copy; 2023 Hak Cipta Dilindungi</p>
   </footer>
 </div>
-
-<p-drawer
-  ngClass="p-drawer"
-  [(visible)]="isVisible"
-  position="right"
-  [appendTo]="container"
-  [style]="{ position: 'absolute' }"
->
-  <app-menu-sidebar></app-menu-sidebar>
-</p-drawer>

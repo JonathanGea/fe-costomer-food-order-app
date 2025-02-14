@@ -1,35 +1,42 @@
-import {
-  Component,
-  ElementRef,
-  HostListener,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Product } from '../../core/models/product.model';
 import { ProductService } from '../../shared/services/product.service';
-import { CardModule } from 'primeng/card';
 import { ProductComponent } from '../../shared/components/product/product.component';
 import { ShopInfoCardComponent } from '../../shared/components/shop-info-card/shop-info-card.component';
-import { MenuHeaderComponent } from "./menu-header/menu-header.component";
+import { MenuHeaderComponent } from './menu-header/menu-header.component';
+import { ImportsModule } from '../../imports-primeng';
+import { MenuSidebarComponent } from './menu-sidebar/menu-sidebar.component';
 
 @Component({
   selector: 'app-menu',
-  imports: [CardModule, ProductComponent, ShopInfoCardComponent, MenuHeaderComponent],
+  imports: [
+    ImportsModule,
+    ProductComponent,
+    ShopInfoCardComponent,
+    MenuHeaderComponent,
+    MenuSidebarComponent,
+  ],
   templateUrl: './menu.component.html',
 })
 export class MenuComponent implements OnInit {
+  @Input() container!: ElementRef;  
+  isVisible: boolean = false;
   products: Product[] = [];
-  @ViewChild('container', { static: true })
-  container!: ElementRef;
 
-  getContainer() {
-    return this.container.nativeElement;
+
+
+  ngAfterViewInit() {
+
   }
+
+  toggleDrawer() {
+    this.isVisible = !this.isVisible;
+  }
+
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.getProducts();
-    console.log('this.products :>> ', this.products);
   }
 
   getProducts() {

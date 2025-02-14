@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, HostListener, EventEmitter, Output } from '@angular/core';
 import { ImportsModule } from '../../../imports-primeng';
 
 @Component({
@@ -41,16 +41,20 @@ import { ImportsModule } from '../../../imports-primeng';
           [rounded]="true"
           [text]="true"
           severity="secondary"
-          (click)="isVisible = true"
+          (click)="onToggleDrawer()"
         />
       </div>
     </div>
   `,
 })
 export class MenuHeaderComponent {
-  @Input() container: any;
 
-  isVisible = false;
+  @Output() toggleDrawer = new EventEmitter<void>(); 
+
+  onToggleDrawer() {
+    this.toggleDrawer.emit(); 
+  }
+
 
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
