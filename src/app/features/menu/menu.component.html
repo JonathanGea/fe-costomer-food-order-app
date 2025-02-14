@@ -1,0 +1,16 @@
+<main>
+  <app-menu-header></app-menu-header>
+  <section #banner>
+    <div style="margin-top: 72px">
+      <h2>Hai budi</h2>
+      <p>mau pesan apa hari ini.</p>
+    </div>
+  </section>
+
+  <app-shop-info-card></app-shop-info-card>
+  <div style="padding-top: 24px">
+    @for (product of products; track product.id) {
+    <app-product [product]="product"></app-product>
+    }
+  </div>
+</main>

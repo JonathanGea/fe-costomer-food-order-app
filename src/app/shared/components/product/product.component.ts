@@ -1,15 +1,12 @@
-import { Component } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
+import { Component, Input, Output } from '@angular/core';
+import { Product } from '../../../core/models/product.model';
+import { ImportsModule } from '../../../imports';
 @Component({
   selector: 'app-product',
-  imports: [
-    CardModule,
-    ButtonModule
-  ],
+  imports: [ImportsModule],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css'
+  styleUrl: './product.component.css',
 })
 export class ProductComponent {
-
+  @Input() product: Product | undefined;
 }

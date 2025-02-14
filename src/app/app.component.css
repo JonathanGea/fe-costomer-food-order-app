@@ -1,0 +1,10 @@
+.container {
+  padding: 12px;
+  max-width: 500px;
+  min-height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  position: relative;
+}

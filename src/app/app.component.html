@@ -1,28 +1,16 @@
-<div class="container">
-  <main>
-    <h2>Hai budi</h2>
-    <p>mau pesan apa hari ini.</p>
-
-    <p-card header="Toko Makanan Weannak Banget">
-      <p class="m-0">close order in 10:30 </p>
-    </p-card>
-    
-
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-    <app-product></app-product>
-  </main>
-
+<div class="container" #container>
+  <app-menu></app-menu>
   <footer>
     <p>&copy; 2023 Hak Cipta Dilindungi</p>
   </footer>
 </div>
+
+<p-drawer
+  ngClass="p-drawer"
+  [(visible)]="isVisible"
+  position="right"
+  [appendTo]="container"
+  [style]="{ position: 'absolute' }"
+>
+  <app-menu-sidebar></app-menu-sidebar>
+</p-drawer>

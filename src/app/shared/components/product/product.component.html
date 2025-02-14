@@ -3,17 +3,17 @@
     <div class="product-card__image-container">
       <img
         class="product-card__image"
-        src="https://esb-order.oss-ap-southeast-5.aliyuncs.com/images/jkid/menu/MNU_1848_20250124103408_thumb.webp"
-        alt="Melati Coco"
+        [src]="product?.urlImage"
+        [alt]="product?.name"
       />
     </div>
     <div class="product-card__details">
       <div>
-        <h3 class="product-card__name">Melati Coco</h3>
-        <p class="product-card__description">rosela, strawberry, hydrococo</p>
+        <h3 class="product-card__name">{{product?.name}}</h3>
+        <p class="product-card__description">{{product?.description}}</p>
       </div>
       <div class="product-card__price-and-button">
-        <span class="product-card__price"><strong>Rp29.000</strong></span>
+        <span class="product-card__price"><strong>{{product?.price}}</strong></span>
         <p-button
           variant="outlined"
           severity="info"

@@ -1,32 +1,17 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
-import { MessageModule } from 'primeng/message';
-import { CommonModule } from '@angular/common';
-import { ProductComponent } from './shared/components/product/product.component';
-import { CardModule } from 'primeng/card';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { ImportsModule } from './imports-primeng';
+import { MenuComponent } from './features/menu/menu.component';
+import { MenuSidebarComponent } from "./features/menu/menu-sidebar/menu-sidebar.component";
 
 @Component({
   selector: 'app-root',
-  imports: [
-    CommonModule,
-    InputTextModule,
-    ButtonModule,
-    MessageModule,
-    FormsModule,
-    ProductComponent,
-    CardModule
-  ],
+  imports: [ImportsModule, MenuComponent, MenuSidebarComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrls:  ['./app.component.css'],
 })
-export class AppComponent {
-  text = '';
+export class AppComponent implements AfterViewInit {
+  isVisible: boolean = true;
 
-  msg = '';
-
-  onClick() {
-    this.msg = 'Welcome ' + this.text;
+  ngAfterViewInit() {
   }
 }
