@@ -1,11 +1,13 @@
-export interface Product {
-    id: string;
-    name: string;
-    urlImage: string;
-    price: number;
-    description: string;
-    category: string;
-    categoryId: string;
-    isActivated: boolean;
-  }
-  
+export interface ProductOrder {
+  name: string;
+  quantity: number;
+  subTotalPrice: number;
+}
+
+export interface Order {
+  id: string;
+  code: string;
+  createdAt: Date;
+  totalPrice: number;
+  productOrders: ProductOrder[];
+}

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
-import { ImportsModule } from '../../../imports-primeng';
+import { ImportsPrimengModule } from '../../../shared/imports/imports-primeng';
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [ImportsModule],
+  imports: [ImportsPrimengModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })

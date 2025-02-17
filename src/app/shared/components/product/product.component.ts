@@ -1,9 +1,9 @@
 import { Component, Input, Output } from '@angular/core';
 import { Product } from '../../../core/models/product.model';
-import { ImportsModule } from '../../../imports';
+import { ImportsPrimengModule } from '../../imports/imports-primeng';
 @Component({
   selector: 'app-product',
-  imports: [ImportsModule],
+  imports: [ImportsPrimengModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
 })

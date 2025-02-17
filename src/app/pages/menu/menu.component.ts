@@ -4,14 +4,14 @@ import { ProductService } from '../../shared/services/product.service';
 import { ProductComponent } from '../../shared/components/product/product.component';
 import { ShopInfoCardComponent } from '../../shared/components/shop-info-card/shop-info-card.component';
 import { MenuHeaderComponent } from './menu-header/menu-header.component';
-import { ImportsModule } from '../../imports-primeng';
+import { ImportsPrimengModule } from '../../shared/imports/imports-primeng';
 import { ContainerService } from '../../shared/services/container.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-menu',
   imports: [
-    ImportsModule,
+    ImportsPrimengModule,
     ProductComponent,
     ShopInfoCardComponent,
     MenuHeaderComponent,

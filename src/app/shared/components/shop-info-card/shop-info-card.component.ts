@@ -1,9 +1,9 @@
 import { Component, HostListener, Input, output } from '@angular/core';
-import { ImportsModule } from '../../../imports-primeng';
+import { ImportsPrimengModule } from '../../imports/imports-primeng';
 
 @Component({
   selector: 'app-shop-info-card',
-  imports: [ImportsModule],
+  imports: [ImportsPrimengModule],
   template: `
     <p-card header="Toko Makanan Weannak Banget">
       <p class="m-0">close order in 10:30</p>

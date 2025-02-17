@@ -1,0 +1,7 @@
+<p>order-history works!</p>
+
+<div *ngIf="orderHistory.length > 0">
+  <ng-container *ngFor="let order of orderHistory;">
+    <app-order-history-card [order]="order"></app-order-history-card>
+  </ng-container>
+</div>

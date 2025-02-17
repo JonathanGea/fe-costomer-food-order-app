@@ -46,4 +46,4 @@ import { InputTextModule } from 'primeng/inputtext';
   ],
   providers: [MessageService],
 })
-export class ImportsModule {}
+export class ImportsPrimengModule {}

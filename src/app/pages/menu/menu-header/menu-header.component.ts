@@ -1,9 +1,9 @@
 import { Component, HostListener, EventEmitter, Output } from '@angular/core';
-import { ImportsModule } from '../../../imports-primeng';
+import { ImportsPrimengModule } from '../../../shared/imports/imports-primeng';
 
 @Component({
   selector: 'app-menu-header',
-  imports: [ImportsModule],
+  imports: [ImportsPrimengModule],
   template: `
     <style>
       .card {

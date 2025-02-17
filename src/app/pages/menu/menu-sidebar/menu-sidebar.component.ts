@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ImportsModule } from '../../../imports-primeng';
+import { ImportsPrimengModule } from '../../../shared/imports/imports-primeng';
 import { MenuItem } from 'primeng/api';
 @Component({
   selector: 'app-menu-sidebar',
-  imports: [ImportsModule],
+  imports: [ImportsPrimengModule],
   templateUrl: './menu-sidebar.component.html',
   styleUrl: './menu-sidebar.component.css',
 })

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { ImportsModule } from '../../imports-primeng';
+import { ImportsPrimengModule } from '../../shared/imports/imports-primeng';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
-  imports: [ImportsModule, FormsModule],
+  imports: [ImportsPrimengModule, FormsModule],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css',
 })
