@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { MenuComponent } from './features/menu/menu.component';
-import { UserProfileComponent } from './features/menu/user-profile/user-profile.component';
-import { CartComponent } from './features/cart/cart.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 export const routes: Routes = [
   { path: '', component: MenuComponent },

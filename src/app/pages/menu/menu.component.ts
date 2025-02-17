@@ -49,7 +49,7 @@ export class MenuComponent implements OnInit {
         this.products = products;
       },
       error: (error) => {
-        console.log('error :>> ', error);
+        console.log('error get products:>> ', error);
       },
       complete: () => {
         console.log('Product retrieval complete');

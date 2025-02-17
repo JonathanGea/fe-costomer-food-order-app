@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { ImportsModule } from '../../../imports-primeng';
+import { ImportsModule } from '../../imports-primeng';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 

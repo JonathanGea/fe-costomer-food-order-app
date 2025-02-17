@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {  MenuComponent } from './features/menu/menu.component';
+import {  MenuComponent } from './pages/menu/menu.component';
 import { ContainerService } from './shared/services/container.service';
 
 @Component({
