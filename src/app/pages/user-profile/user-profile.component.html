@@ -1,11 +1,16 @@
 <div>
-  <p-toast></p-toast>
+  <app-toast></app-toast>
 </div>
 
 <p-toolbar>
   <ng-template #start>
-    <p-button icon="pi pi-arrow-left" class="mr-2" text severity="secondary" 
-    (onClick)="derectToMenuPage()"/>
+    <p-button
+      icon="pi pi-arrow-left"
+      class="mr-2"
+      text
+      severity="secondary"
+      (onClick)="derectToMenuPage()"
+    />
   </ng-template>
   <ng-template #center>
     <span><strong>Profile</strong></span>
@@ -14,39 +19,54 @@
 </p-toolbar>
 
 <div class="d-flex justify-center m-3">
-    <p-avatar
-        image="{{ userAvatar }}"
-        size="xlarge"
-        shape="circle"
-        styleClass="mr-2"
-      ></p-avatar>
+  <p-avatar
+    image="{{ user?.imageUrl }}"
+    size="xlarge"
+    shape="circle"
+    styleClass="mr-2"
+  ></p-avatar>
 </div>
 
 <div class="p-1">
-  <p-floatlabel variant="in" class="my-2 w-100">
+  <div class="d-flex flex-column gap-2 my-2">
+    <label for="username">Username</label>
     <input
       pInputText
-      id="name"
-      class="w-100"
-      [(ngModel)]="name"
-      autocomplete="off"
+      id="username"
+      aria-describedby="username-help"
+      [(ngModel)]="user!.name"
+      disabled="{{!isEditing}}"
     />
-    <label for="name">Your Name</label>
-  </p-floatlabel>
-  <p-floatlabel variant="in" class="my-2 w-100">
+  </div>
+  <div class="d-flex flex-column gap-2 my-2">
+    <label for="username">Email</label>
     <input
       pInputText
-      type="email"
       id="email"
-      class="w-100"
-      [(ngModel)]="email"
-      autocomplete="off"
+      aria-describedby="username-help"
+      [(ngModel)]="user!.email"
+      disabled="{{!isEditing}}"
 
     />
-    <label for="email">email</label>
-  </p-floatlabel>
+  </div>
+  <div class="d-flex flex-column gap-2 my-2">
+    <label for="delivery-location">Delivery location</label>
 
-  <div>
+    <p-autocomplete
+      [(ngModel)]="user!.address"
+      [forceSelection]="true"
+      [suggestions]="filteredCountries || []"
+      (completeMethod)="filterCountry($event)"
+      optionLabel="name"
+      fluid="true"
+      disabled="{{!isEditing}}"
+
+    />
+    <small id="delivery-location-help">Type and select your location to delivery your food.</small>
+
+  </div>
+
+  <div class="my-4">
     <p-button
       *ngIf="!isEditing"
       (click)="toggleEdit()"

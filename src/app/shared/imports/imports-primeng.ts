@@ -13,7 +13,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 
 @NgModule({
@@ -31,6 +31,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     FloatLabelModule,
     InputTextModule,
     ProgressSpinnerModule,
+    AutoCompleteModule
   ],
   exports: [
     FormsModule,
@@ -46,6 +47,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     FloatLabelModule,
     InputTextModule,
     ProgressSpinnerModule,
+    AutoCompleteModule
   ],
   providers: [MessageService],
 })

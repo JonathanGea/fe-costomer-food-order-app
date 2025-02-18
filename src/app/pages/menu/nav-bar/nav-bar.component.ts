@@ -13,7 +13,7 @@ export class NavBarComponent {
   userAvatar: string = 'https://picsum.photos/id/237/200/300';
   items: MenuItem[] | undefined;
 
-  constructor(private messageService: MessageService) {}
+  constructor(private readonly messageService: MessageService) {}
 
   ngOnInit() {
     this.items = [

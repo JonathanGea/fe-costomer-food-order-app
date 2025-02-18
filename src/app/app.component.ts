@@ -1,6 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {  MenuComponent } from './pages/menu/menu.component';
 import { ContainerService } from './shared/services/container.service';
 
 @Component({
@@ -31,7 +30,7 @@ import { ContainerService } from './shared/services/container.service';
 export class AppComponent {
   @ViewChild('container', { static: false }) container!: ElementRef;
 
-  constructor(private containerService: ContainerService) {}
+  constructor(private readonly containerService: ContainerService) {}
 
   ngAfterViewInit() {
     this.containerService.setContainer(this.container);

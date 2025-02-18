@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Product } from '../../core/models/product.model';
 import { ProductService } from '../../shared/services/product.service';
 import { ProductComponent } from '../../shared/components/product/product.component';
@@ -7,6 +7,7 @@ import { MenuHeaderComponent } from './menu-header/menu-header.component';
 import { ImportsPrimengModule } from '../../shared/imports/imports-primeng';
 import { ContainerService } from '../../shared/services/container.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LoadingComponent } from "../../shared/components/loading/loading.component";
 
 @Component({
   selector: 'app-menu',
@@ -15,7 +16,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     ProductComponent,
     ShopInfoCardComponent,
     MenuHeaderComponent,
-    NavBarComponent
+    NavBarComponent,
+    LoadingComponent
 ],
   templateUrl: './menu.component.html',
 })
@@ -25,23 +27,24 @@ export class MenuComponent implements OnInit {
 
   container: ElementRef | null = null;
 
-  constructor(private containerService: ContainerService,private productService: ProductService) {}
+  isloading:boolean = true;
+
+  constructor(
+    private readonly containerService: ContainerService,
+    private readonly productService: ProductService
+  ) {}
 
   ngOnInit() {
-    this.containerService.container$.subscribe(container => {
+    this.containerService.container$.subscribe((container) => {
       this.container = container;
     });
     this.getProducts();
   }
 
-  ngAfterViewInit() {
-
-  }
 
   toggleDrawer() {
     this.isVisible = !this.isVisible;
   }
-
 
   getProducts() {
     this.productService.getProducts().subscribe({
@@ -53,6 +56,7 @@ export class MenuComponent implements OnInit {
       },
       complete: () => {
         console.log('Product retrieval complete');
+        this.isloading=false;
       },
     });
   }

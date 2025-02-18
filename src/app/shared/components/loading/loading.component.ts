@@ -29,5 +29,5 @@ import { ProgressSpinner } from 'primeng/progressspinner';
 })
 export class LoadingComponent {
   @Input()
-  isLoading!: boolean | false;
+  isLoading!: boolean;
 }

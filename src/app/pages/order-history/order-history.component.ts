@@ -16,7 +16,7 @@ export class OrderHistoryComponent implements OnInit {
   orderHistory: Order[] = [];
   isLoading = true; 
 
-  constructor(private orderService: OrderService, private router: Router) {}
+  constructor(private readonly orderService: OrderService, private readonly router: Router) {}
   ngOnInit(): void {
     this.getOrderHistory();
     console.log('this.orderHistory :>> ', this.orderHistory);

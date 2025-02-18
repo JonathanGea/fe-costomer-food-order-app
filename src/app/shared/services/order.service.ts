@@ -9,9 +9,9 @@ import { Order } from '../../core/models/order.model';
 })
 export class OrderService {
 
-    private apiUrl = environment.apiUrl + '/order';
+    private readonly apiUrl = environment.apiUrl + '/order';
   
-    constructor(private http: HttpClient) {}
+    constructor(private readonly http: HttpClient) {}
   
     getOrderHistoy(): Observable<Order[]> {
       return this.http
