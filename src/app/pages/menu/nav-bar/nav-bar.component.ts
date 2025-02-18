@@ -25,6 +25,7 @@ export class NavBarComponent {
       {
         label: 'Order History',
         icon: 'pi pi-history',
+        routerLink:'history'
       },
       {
         label: 'Sign Out',

@@ -29,11 +29,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/app/assets/styles/flex.css",
-              "src/app/assets/styles/justify.css",
-              "src/app/assets/styles/align.css",
-              "src/app/assets/styles/widths.css",
-              "src/app/assets/styles/spacing.css"
+              "src/app/assets/styles/utilities/flex.css",
+              "src/app/assets/styles/utilities/justify.css",
+              "src/app/assets/styles/utilities/align.css",
+              "src/app/assets/styles/utilities/widths.css",
+              "src/app/assets/styles/utilities/spacing.css",
+              "src/app/assets/styles/utilities/font.css"
 
             ],
             "scripts": []
@@ -99,11 +100,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/app/assets/styles/flex.css",
-              "src/app/assets/styles/justify.css",
-              "src/app/assets/styles/align.css",
-              "src/app/assets/styles/widths.css",
-              "src/app/assets/styles/spacing.css"
+              "src/app/assets/styles/utilities/flex.css",
+              "src/app/assets/styles/utilities/justify.css",
+              "src/app/assets/styles/utilities/align.css",
+              "src/app/assets/styles/utilities/widths.css",
+              "src/app/assets/styles/utilities/spacing.css",
+              "src/app/assets/styles/utilities/font.css"
 
             ],
             "scripts": []

@@ -1,41 +1,41 @@
 /* align.css */
 
 .items-start {
-    align-items: flex-start !important;
-  }
-  
-  .items-end {
-    align-items: flex-end !important;
-  }
-  
-  .items-center {
-    align-items: center !important;
-  }
-  
-  .items-baseline {
-    align-items: baseline !important;
-  }
-  
-  .items-stretch {
-    align-items: stretch !important;
-  }
-  
-  .self-start {
-    align-self: flex-start !important;
-  }
-  
-  .self-end {
-    align-self: flex-end !important;
-  }
-  
-  .self-center {
-    align-self: center !important;
-  }
-  
-  .self-baseline {
-    align-self: baseline !important;
-  }
-  
-  .self-stretch {
-    align-self: stretch !important;
-  }
+  align-items: flex-start !important;
+}
+
+.items-end {
+  align-items: flex-end !important;
+}
+
+.items-center {
+  align-items: center !important;
+}
+
+.items-baseline {
+  align-items: baseline !important;
+}
+
+.items-stretch {
+  align-items: stretch !important;
+}
+
+.self-start {
+  align-self: flex-start !important;
+}
+
+.self-end {
+  align-self: flex-end !important;
+}
+
+.self-center {
+  align-self: center !important;
+}
+
+.self-baseline {
+  align-self: baseline !important;
+}
+
+.self-stretch {
+  align-self: stretch !important;
+}

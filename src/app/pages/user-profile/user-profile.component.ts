@@ -54,7 +54,7 @@ export class UserProfileComponent {
     this.email = this.originalEmail;
   }
 
-  goBack() {
+  derectToMenuPage() {
     this.router.navigate(['/']);
   }
 }

@@ -13,4 +13,4 @@ import { MessageService } from 'primeng/api';
     MessageService
   ],
 })
-export class ImportsPrimengModule {}
+export class imports {}

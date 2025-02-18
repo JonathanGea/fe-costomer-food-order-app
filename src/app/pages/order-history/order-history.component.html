@@ -1,7 +1,33 @@
-<p>order-history works!</p>
-
-<div *ngIf="orderHistory.length > 0">
-  <ng-container *ngFor="let order of orderHistory;">
-    <app-order-history-card [order]="order"></app-order-history-card>
-  </ng-container>
+<div>
+    <p-toast></p-toast>
 </div>
+
+<p-toolbar>
+    <ng-template #start>
+        <p-button
+        icon="pi pi-arrow-left"
+        class="mr-2"
+        text
+        severity="secondary"
+        (onClick)="derectToMenuPage()"
+        />
+    </ng-template>
+    <ng-template #center>
+        <span><strong>History</strong></span>
+    </ng-template>
+    <ng-template #end> </ng-template>
+</p-toolbar>
+
+
+<app-loading [isLoading]="isLoading"></app-loading>
+<!-- Order History -->
+  <div *ngIf="!isLoading && orderHistory.length > 0">
+    <ng-container *ngFor="let order of orderHistory">
+      <app-order-history-card [order]="order"></app-order-history-card>
+    </ng-container>
+  </div>
+  
+  <!-- Pesan jika tidak ada data -->
+  <div *ngIf="!isLoading && orderHistory.length === 0">
+    <p>No orders found.</p>
+  </div>

@@ -12,6 +12,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { ToolbarModule } from 'primeng/toolbar';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 
 
@@ -28,7 +29,8 @@ import { InputTextModule } from 'primeng/inputtext';
     PanelMenuModule,
     ToolbarModule,
     FloatLabelModule,
-    InputTextModule
+    InputTextModule,
+    ProgressSpinnerModule,
   ],
   exports: [
     FormsModule,
@@ -42,7 +44,8 @@ import { InputTextModule } from 'primeng/inputtext';
     PanelMenuModule,
     ToolbarModule,
     FloatLabelModule,
-    InputTextModule
+    InputTextModule,
+    ProgressSpinnerModule,
   ],
   providers: [MessageService],
 })

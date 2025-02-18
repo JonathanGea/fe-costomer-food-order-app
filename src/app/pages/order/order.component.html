@@ -1,0 +1,20 @@
+<p>order works!</p>
+<div>
+    <p-toast></p-toast>
+</div>
+
+<p-toolbar>
+    <ng-template #start>
+        <p-button
+        icon="pi pi-arrow-left"
+        class="mr-2"
+        text
+        severity="secondary"
+        (onClick)="derectToMenuPage()"
+        />
+    </ng-template>
+    <ng-template #center>
+        <span><strong>Order</strong></span>
+    </ng-template>
+    <ng-template #end> </ng-template>
+</p-toolbar>
