@@ -8,6 +8,7 @@ import { ImportsPrimengModule } from '../../shared/imports/imports-primeng';
 import { ContainerService } from '../../shared/services/container.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoadingComponent } from "../../shared/components/loading/loading.component";
+import { CheckOutButtonComponent } from "../../shared/components/check-out-button/check-out-button.component";
 
 @Component({
   selector: 'app-menu',
@@ -17,7 +18,8 @@ import { LoadingComponent } from "../../shared/components/loading/loading.compon
     ShopInfoCardComponent,
     MenuHeaderComponent,
     NavBarComponent,
-    LoadingComponent
+    LoadingComponent,
+    CheckOutButtonComponent
 ],
   templateUrl: './menu.component.html',
 })

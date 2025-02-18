@@ -9,19 +9,19 @@
   </section>
 
   <app-shop-info-card></app-shop-info-card>
-  <div style="padding-top: 24px">
+  <div style="padding-top: 24px; margin-bottom: 24px">
     @for (product of products; track product.id) {
     <app-product [product]="product"></app-product>
     }
   </div>
-
+  <app-check-out-button></app-check-out-button>
   <p-drawer
     ngClass="p-drawer"
     [(visible)]="isVisible"
     position="right"
     [appendTo]="container?.nativeElement"
-    [style]="{ position: 'absolute', width:'100%', 'max-height': '100vp'}"
+    [style]="{ position: 'absolute', width: '100%', 'max-height': '100vp' }"
   >
-  <app-nav-bar></app-nav-bar>
-</p-drawer>
+    <app-nav-bar></app-nav-bar>
+  </p-drawer>
 </main>

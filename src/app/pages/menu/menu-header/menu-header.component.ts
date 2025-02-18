@@ -1,5 +1,6 @@
 import { Component, HostListener, EventEmitter, Output } from '@angular/core';
 import { ImportsPrimengModule } from '../../../shared/imports/imports-primeng';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-header',
@@ -11,7 +12,6 @@ import { ImportsPrimengModule } from '../../../shared/imports/imports-primeng';
         padding: 12px;
         border: 0.5px solid #fefefe;
         font-size: 16px;
-        font-weight: 700;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -34,8 +34,16 @@ import { ImportsPrimengModule } from '../../../shared/imports/imports-primeng';
       }
     </style>
     <div class="card card--sticky">
-      <span>Toko Makanan Weannak Banget</span>
+      <div><span class="fw-bold">Delivered to : </span> <br /></div>
+
       <div>
+        <p-button
+          icon="pi pi-search"
+          [rounded]="true"
+          [text]="true"
+          severity="secondary"
+          (click)="derectToSearchPage()"
+        />
         <p-button
           icon="pi pi-bars"
           [rounded]="true"
@@ -48,13 +56,23 @@ import { ImportsPrimengModule } from '../../../shared/imports/imports-primeng';
   `,
 })
 export class MenuHeaderComponent {
+  @Output() toggleDrawer = new EventEmitter<void>();
 
-  @Output() toggleDrawer = new EventEmitter<void>(); 
 
-  onToggleDrawer() {
-    this.toggleDrawer.emit(); 
+  constructor(
+     private readonly router: Router
+  ){
+
   }
 
+  onToggleDrawer() {
+    this.toggleDrawer.emit();
+  }
+
+  derectToSearchPage() {
+    this.router.navigate(['/search']);
+    
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
