@@ -9,6 +9,7 @@ import { ContainerService } from '../../shared/services/container.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoadingComponent } from "../../shared/components/loading/loading.component";
 import { CheckOutButtonComponent } from "../../shared/components/check-out-button/check-out-button.component";
+import { OrderService } from '../../shared/services/order.service';
 
 @Component({
   selector: 'app-menu',
@@ -33,7 +34,8 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private readonly containerService: ContainerService,
-    private readonly productService: ProductService
+    private readonly productService: ProductService,
+    public orderService: OrderService
   ) {}
 
   ngOnInit() {
@@ -62,4 +64,7 @@ export class MenuComponent implements OnInit {
       },
     });
   }
+
+
+
 }

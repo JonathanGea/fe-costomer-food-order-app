@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://54.179.28.16/api/v1/'
+    apiUrl: 'https://food-order-appp-7cb59660b45c.herokuapp.com/api/v1'
   };

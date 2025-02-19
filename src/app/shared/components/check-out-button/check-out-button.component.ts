@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ImportsPrimengModule } from '../../imports/imports-primeng';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-check-out-button',
@@ -12,22 +13,22 @@ import { ImportsPrimengModule } from '../../imports/imports-primeng';
     transform: translateX(-50%);
     z-index: 100;
     max-width: 400px;
-    width: 75%;
+    width: 95%;
   "
   >
     <div
       class="card w-100 d-flex justify-content-between p-2"
       style="align-items: center"
+      *ngIf="this.orderService.getProductTotalQuantity() > 0"
     >
       <div>
         <div class="fs-8">Total Price</div>
-        <div class="fw-bold fs-7">Rp1.221.000</div>
+        <div class="fw-bold fs-7">{{ this.orderService.getTotalPrice() | currency : "Rp" }}</div>
       </div>
       <div>
         <p-button
-          badge="2"
+          badge="{{ this.orderService.getProductTotalQuantity() }}"
           label="Check Out"
-          size="small"
           icon="pi pi-shopping-cart"
           severity="info"
         />
@@ -35,4 +36,6 @@ import { ImportsPrimengModule } from '../../imports/imports-primeng';
     </div>
   </div>`,
 })
-export class CheckOutButtonComponent {}
+export class CheckOutButtonComponent {
+  constructor(public orderService: OrderService) {}
+}

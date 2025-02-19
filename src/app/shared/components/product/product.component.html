@@ -3,24 +3,49 @@
     <div class="product-card__image-container">
       <img
         class="product-card__image"
-        [src]="product?.urlImage"
-        [alt]="product?.name"
+        [src]="product.urlImage"
+        [alt]="product.name"
       />
     </div>
     <div class="product-card__details">
       <div>
-        <h3 class="product-card__name">{{product?.name}}</h3>
-        <p class="product-card__description">{{product?.description}}</p>
+        <h3 class="product-card__name">{{ product.name }}</h3>
+        <p class="product-card__description">{{ product.description }}</p>
       </div>
       <div class="product-card__price-and-button">
-        <span class="product-card__price"><strong>{{product?.price}}</strong></span>
-        <p-button
-          variant="outlined"
-          severity="info"
-          label="Add"
-          class="product-card__button"
-          size="small"
-        ></p-button>
+        <span class="product-card__price"
+          ><strong>{{ product.price | currency : "Rp" }}</strong></span
+        >
+        <div class="product-quantity" *ngIf="product">
+          <ng-container *ngIf="orderService.getProductQuantity(product.id) === 0; else quantityControls">
+            <p-button
+              variant="outlined"
+              severity="info"
+              label="Add"
+              class="product-card__button"
+              size="small"
+              (click)="orderService.incrementQuantity(product)"
+            ></p-button>
+          </ng-container>
+        
+          <ng-template #quantityControls>
+            <div class="quantity-controls">
+              <p-button
+                size="small"
+                icon="pi pi-minus"
+                styleClass="p-button-rounded p-button-secondary"
+                (click)="orderService.decrementQuantity(product)"
+              ></p-button>
+              <span class="m-3">&nbsp;{{ orderService.getProductQuantity(product.id) }}&nbsp;</span>
+              <p-button
+                size="small"
+                icon="pi pi-plus"
+                styleClass="p-button-rounded p-button-secondary"
+                (click)="orderService.incrementQuantity(product)"
+              ></p-button>
+            </div>
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>
