@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ImportsPrimengModule } from '../../imports/imports-primeng';
 import { OrderService } from '../../services/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-check-out-button',
@@ -23,7 +24,9 @@ import { OrderService } from '../../services/order.service';
     >
       <div>
         <div class="fs-8">Total Price</div>
-        <div class="fw-bold fs-7">{{ this.orderService.getTotalPrice() | currency : "Rp" }}</div>
+        <div class="fw-bold fs-7">
+          {{ this.orderService.getTotalPrice() | currency : 'Rp' }}
+        </div>
       </div>
       <div>
         <p-button
@@ -31,11 +34,20 @@ import { OrderService } from '../../services/order.service';
           label="Check Out"
           icon="pi pi-shopping-cart"
           severity="info"
-        />
+          (onClick)="derectToCartPage()"
+          />
       </div>
     </div>
   </div>`,
 })
 export class CheckOutButtonComponent {
-  constructor(public orderService: OrderService) {}
+  constructor(
+    public orderService: OrderService,
+    private readonly router: Router
+  ) {}
+
+  derectToCartPage() {
+    console.log("object");
+    this.router.navigate(['/cart']);
+  }
 }

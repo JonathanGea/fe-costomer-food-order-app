@@ -13,6 +13,7 @@ export const routes: Routes = [
   { path: 'history', component: OrderHistoryComponent },
   { path: 'order', component: OrderComponent },
   { path: 'search', component: ProductSearchComponent },
+  { path: 'cart', component: CartComponent },
   {
     path: 'tedt',
     component: MenuComponent,
