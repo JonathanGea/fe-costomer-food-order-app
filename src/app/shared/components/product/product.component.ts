@@ -14,9 +14,4 @@ export class ProductComponent {
     public orderService : OrderService    
   ) {}
 
-  showQuantityControls : boolean = false
-
-  decrementQuantity(){
-    console.log("decrementQuantity");
-  }
 }

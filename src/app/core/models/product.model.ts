@@ -7,6 +7,5 @@ export interface Product {
   category: string;
   categoryId: string;
   isActivated: boolean;
-  quantity:number
-
+  quantity: number;
 }

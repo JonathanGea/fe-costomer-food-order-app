@@ -42,7 +42,7 @@
 </div>
 <div class="container-price">
   <div>
-    <span class="fw-bold">{{ product.price * product.quantity| currency : "Rp" }}</span>
+    <span class="fw-bold">{{ product.price * (product.quantity || 0) | currency : "Rp" }}</span>
   </div>
   <div class="product-quantity" *ngIf="product">
     <ng-container

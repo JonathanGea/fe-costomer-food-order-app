@@ -17,11 +17,14 @@ export class OrderService {
     code: 'null',
     totalPrice: 0,
     createdAt: new Date(),
-    productOrders: [], // Initialize as an empty array
+    productOrders: [],
   };
 
   constructor(private readonly http: HttpClient) {
-    this.order.productOrders = this.getOrder().productOrders;
+    const storedOrder = this.getOrder();
+    if (storedOrder) {
+      this.order = storedOrder;
+    }
   }
 
   getOrderHistoy(): Observable<Order[]> {
@@ -40,9 +43,9 @@ export class OrderService {
       );
   }
 
-  getOrder(): Order {
+  getOrder(): Order | null {
     const storedOrders = localStorage.getItem(this.STORAGE_KEY_ORDER);
-    return storedOrders ? JSON.parse(storedOrders) : [];
+    return storedOrders ? JSON.parse(storedOrders) : null;
   }
 
   getProductOrder(): Product[] {
@@ -50,27 +53,37 @@ export class OrderService {
     return this.order.productOrders;
   }
 
-  saveOrder(orders: Order): void {
-    localStorage.setItem(this.STORAGE_KEY_ORDER, JSON.stringify(orders));
+  saveOrder(order: Order): void {
+    localStorage.setItem(this.STORAGE_KEY_ORDER, JSON.stringify(order));
   }
 
   incrementQuantity(product: Product): void {
+    if (!this.order?.productOrders) {
+      console.error('Order or productOrders is undefined');
+      return;
+    }
+
     const existingProductOrder = this.order.productOrders.find(
       (po) => po.id === product.id
     );
 
     if (existingProductOrder) {
-      existingProductOrder.quantity++;
+      existingProductOrder.quantity = (existingProductOrder.quantity || 0) + 1;
     } else {
-      // Ensure product has a quantity property
       this.order.productOrders.push({ ...product, quantity: 1 });
     }
+
     this.saveOrder(this.order);
   }
 
   decrementQuantity(product: Product): void {
+    if (!this.order?.productOrders) {
+      console.error('Order or productOrders is undefined');
+      return;
+    }
+
     const existingProductOrder = this.order.productOrders.find(
-      (po: Product) => po.id === product.id
+      (po) => po.id === product.id
     );
 
     if (existingProductOrder && existingProductOrder.quantity > 0) {
@@ -78,21 +91,17 @@ export class OrderService {
 
       if (existingProductOrder.quantity <= 0) {
         this.order.productOrders = this.order.productOrders.filter(
-          (po: Product) => po.id !== product.id
+          (po) => po.id !== product.id
         );
       }
     }
+
     this.saveOrder(this.order);
   }
 
   getProductQuantity(id: string): number {
-    const productOrder = this.order.productOrders.find((po) => po.id === id);
-
-    if (productOrder) {
-      return productOrder.quantity;
-    } else {
-      return 0;
-    }
+    const productOrder = this.order?.productOrders?.find((po) => po.id === id);
+    return productOrder ? productOrder.quantity ?? 0 : 0;
   }
 
   getProductTotalQuantity(): number {
@@ -100,7 +109,7 @@ export class OrderService {
 
     if (this.order.productOrders) {
       for (const productOrder of this.order.productOrders) {
-        totalQuantity += productOrder.quantity;
+        totalQuantity += productOrder.quantity ?? 0;
       }
     }
     return totalQuantity;
@@ -111,7 +120,7 @@ export class OrderService {
 
     if (this.order.productOrders) {
       for (const productOrder of this.order.productOrders) {
-        totalPrice += (productOrder.quantity || 0) * (productOrder.price || 0);
+        totalPrice += (productOrder.quantity ?? 0) * (productOrder.price || 0);
       }
     }
     return totalPrice;
