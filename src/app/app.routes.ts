@@ -5,6 +5,8 @@ import { CartComponent } from './pages/cart/cart.component';
 import { OrderHistoryComponent } from './pages/order-history/order-history.component';
 import { OrderComponent } from './pages/order/order.component';
 import { ProductSearchComponent } from './pages/product-search/product-search.component';
+import { OrderSuccessComponent } from './pages/order-success/order-success.component';
+import { OrderHistoryDetailComponent } from './pages/order-history-detail/order-history-detail.component';
 
 export const routes: Routes = [
   { path: '', component: MenuComponent },
@@ -13,6 +15,9 @@ export const routes: Routes = [
   { path: 'history', component: OrderHistoryComponent },
   { path: 'order', component: OrderComponent },
   { path: 'search', component: ProductSearchComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'order/succes', component: OrderSuccessComponent },
+  { path: 'history/id', component: OrderHistoryDetailComponent },
   {
     path: 'tedt',
     component: MenuComponent,

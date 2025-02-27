@@ -1,1 +1,28 @@
-<p>cart works!</p>
+<p-toolbar>
+  <ng-template #start>
+    <p-button
+      icon="pi pi-arrow-left"
+      class="mr-2"
+      text
+      severity="secondary"
+      (onClick)="this.derect.toMenuPage()"
+    />
+  </ng-template>
+  <ng-template #center>
+    <span><strong>Order</strong></span>
+  </ng-template>
+  <ng-template #end> </ng-template>
+</p-toolbar>
+
+
+<div
+  style="padding-top: 24px; margin-bottom: 24px"
+  *ngIf="productOrder.length > 0"
+>
+  <ng-container *ngFor="let product of productOrder">
+    <app-cart-product [product]="product" (updateProductOrder)="updateProductOrder()"></app-cart-product>
+  </ng-container>
+</div>
+
+
+<app-order-button></app-order-button>

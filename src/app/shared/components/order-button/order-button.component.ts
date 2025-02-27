@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { ImportsPrimengModule } from '../../imports/imports-primeng';
 import { OrderService } from '../../services/order.service';
-import { Router } from '@angular/router';
+import { DerectService } from '../../services/derect.service';
+import { Imports } from '../../imports/imports';
+import { ImportsPrimengModule } from '../../imports/imports-primeng';
 
 @Component({
-  selector: 'app-check-out-button',
-  imports: [ImportsPrimengModule],
-  template: ` <div
+  selector: 'app-order-button',
+  imports: [Imports, ImportsPrimengModule],
+  template: `
+  <div
     style="
     position: fixed;
     bottom: 12px;
@@ -33,21 +35,26 @@ import { Router } from '@angular/router';
           badge="{{ this.orderService.getProductTotalQuantity() }}"
           label="Check Out"
           icon="pi pi-shopping-cart"
-          severity="info"
-          (onClick)="derectToCartPage()"
+          severity="contrast"
+          (onClick)="onClick()"
           />
       </div>
     </div>
-  </div>`,
+  </div>
+  `
 })
-export class CheckOutButtonComponent {
-  constructor(
-    public orderService: OrderService,
-    private readonly router: Router
-  ) {}
+export class OrderButtonComponent {
 
-  derectToCartPage() {
-    console.log("object");
-    this.router.navigate(['/cart']);
+  constructor(
+    public orderService : OrderService,
+    public derect : DerectService
+  ){
+
   }
+
+  onClick(){
+    this.orderService.doOrder();
+    this.derect.toOrderSuccesPage();
+  }
+
 }

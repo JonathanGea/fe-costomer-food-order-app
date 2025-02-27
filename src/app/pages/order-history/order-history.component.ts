@@ -23,18 +23,11 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   getOrderHistory() {
-    this.orderService.getOrderHistoy().subscribe({
-      next: (orderHistory) => {
-        this.orderHistory = orderHistory;
-      },
-      error: (error) => {
-        console.log('error :>> ', error);
-      },
-      complete: () => {
-        console.log('Product retrieval complete');
-        this.isLoading = false; 
-      },
-    });
+
+    this.orderHistory = this.orderService.getOrders();
+
+    this.isLoading = false; 
+
   }
 
   derectToMenuPage() {

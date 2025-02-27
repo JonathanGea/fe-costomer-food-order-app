@@ -1,0 +1,79 @@
+<p-toolbar>
+  <ng-template #start>
+    <p-button
+      icon="pi pi-arrow-left"
+      class="mr-2"
+      text
+      severity="secondary"
+      (onClick)="this.derect.toMenuPage()"
+    />
+  </ng-template>
+  <ng-template #center>
+    <span><strong>Order Detail</strong></span>
+  </ng-template>
+  <ng-template #end> </ng-template>
+</p-toolbar>
+
+<div class="m-3 d-flex justify-content-center">
+  <span class=""> Order code : #abcde12345 </span>
+</div>
+
+<div class="m-3 d-flex justify-content-between">
+  <div>
+    <span class="">Kamis, 27 feb 2025</span>
+  </div>
+  <div>
+    <span class="">12:30</span>
+  </div>
+</div>
+<div class="my-5 mx-3">
+  <div class="mb-3">
+    <span class="fw-bold">Ordered Items</span>
+  </div>
+
+  <ng-container [ngTemplateOutlet]="item" />
+  <ng-container [ngTemplateOutlet]="item" />
+  <ng-container [ngTemplateOutlet]="item" />
+  <ng-container [ngTemplateOutlet]="item" />
+</div>
+
+<ng-template #item>
+  <div class="my-3 d-flex justify-content-between align-items-center">
+    <div>
+      <p-button label="2" variant="outlined" severity="secondary" />
+      <span class="mx-2">nam product</span>
+    </div>
+    <div>
+      <span class="mx-2">Rp12.000.00</span>
+    </div>
+  </div>
+</ng-template>
+
+<hr />
+<div>
+  <div class="m-3 d-flex justify-content-between">
+    <div>
+      <span class="fw-bold">Sub Total</span>
+    </div>
+    <div>
+      <span class="fw-bold">Rp300.000.00</span>
+    </div>
+  </div>
+  <div class="m-3 d-flex justify-content-between">
+    <div>
+      <span class="fw-bold">Tax</span>
+    </div>
+    <div>
+      <span class="fw-bold">Rp300.000.00</span>
+    </div>
+  </div>
+  <hr>
+  <div class="m-3 d-flex justify-content-between">
+    <div>
+      <span class="fw-bold">Total</span>
+    </div>
+    <div>
+      <span class="fw-bold">Rp300.000.00</span>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,10 @@ html {
   height: 100%;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   height: 100%;
   margin: 0;
@@ -20,6 +24,11 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid #e0e0e0;
   transition: box-shadow 0.3s ease-in-out;
+}
+
+.card__no-border {
+  border: none !important;
+  box-shadow: none !important
 }
 
 .card:hover {

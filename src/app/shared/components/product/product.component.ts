@@ -6,7 +6,6 @@ import { OrderService } from '../../services/order.service';
   selector: 'app-product',
   imports: [ImportsPrimengModule],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css',
 })
 export class ProductComponent {
   @Input() product!: Product;
@@ -15,9 +14,4 @@ export class ProductComponent {
     public orderService : OrderService    
   ) {}
 
-  showQuantityControls : boolean = false
-
-  decrementQuantity(){
-    console.log("decrementQuantity");
-  }
 }
