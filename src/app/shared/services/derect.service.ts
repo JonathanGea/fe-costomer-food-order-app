@@ -32,8 +32,11 @@ export class DerectService {
   }
 
   historyDetailPage(id: string) {
-    console.log('id :>> ', id);
     this.router.navigate([`/history/${id}`]);
+  }
+
+  toOrderDetailPage(id: string) {
+    this.router.navigate([`/order/${id}`]);
   }
   
 }

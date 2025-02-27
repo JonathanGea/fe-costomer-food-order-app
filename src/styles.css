@@ -28,7 +28,7 @@ body {
 
 .card__no-border {
   border: none !important;
-  box-shadow: none !important
+  box-shadow: none !important;
 }
 
 .card:hover {
@@ -49,4 +49,11 @@ body {
 .card-footer {
   margin-top: 16px;
   text-align: right;
+}
+
+.sticky {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }

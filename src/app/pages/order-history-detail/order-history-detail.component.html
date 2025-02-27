@@ -5,7 +5,7 @@
       class="mr-2"
       text
       severity="secondary"
-      (onClick)="this.derect.toMenuPage()"
+      (onClick)="this.derect.historyOrderPage()"
     />
   </ng-template>
   <ng-template #center>
@@ -27,14 +27,21 @@
   </div>
 </div>
 <div class="my-5 mx-3">
-  <div class="mb-3">
-    <span class="fw-bold">Ordered Items</span>
+
+  <div class="d-flex justify-content-between">
+    <div>
+      <span class="fw-bold">Ordered Items</span>
+    </div>
+    <div>
+      <p-button label="Reorder" variant="outlined" severity="info" />
+    </div>
   </div>
 
   <ng-container [ngTemplateOutlet]="item" />
   <ng-container [ngTemplateOutlet]="item" />
   <ng-container [ngTemplateOutlet]="item" />
   <ng-container [ngTemplateOutlet]="item" />
+
 </div>
 
 <ng-template #item>
@@ -53,27 +60,29 @@
 <div>
   <div class="m-3 d-flex justify-content-between">
     <div>
-      <span class="fw-bold">Sub Total</span>
+      <span class="">Sub Total</span>
     </div>
     <div>
-      <span class="fw-bold">Rp300.000.00</span>
+      <span class="">Rp300.000.00</span>
     </div>
   </div>
   <div class="m-3 d-flex justify-content-between">
     <div>
-      <span class="fw-bold">Tax</span>
+      <span class="">Tax</span>
     </div>
     <div>
-      <span class="fw-bold">Rp300.000.00</span>
+      <span class="">Rp30.000.00</span>
     </div>
   </div>
-  <hr>
+  <hr />
   <div class="m-3 d-flex justify-content-between">
     <div>
       <span class="fw-bold">Total</span>
     </div>
     <div>
-      <span class="fw-bold">Rp300.000.00</span>
+      <span class="fw-bold">Rp330.000.00</span>
     </div>
   </div>
 </div>
+
+<app-back-to-menu-page></app-back-to-menu-page>

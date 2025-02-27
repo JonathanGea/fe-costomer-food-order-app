@@ -1,33 +1,53 @@
-<div>
-    <p-toast></p-toast>
-</div>
+<style>
+  .-card {
+    background-color: transparent;
+    padding: 12px;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
 
-<p-toolbar>
+  .card--sticky {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 100;
+  }
+</style>
+<div>
+  <p-toast></p-toast>
+</div>
+<div class="-card card--sticky">
+  <p-toolbar>
     <ng-template #start>
-        <p-button
+      <p-button
         icon="pi pi-arrow-left"
         class="mr-2"
         text
         severity="secondary"
         (onClick)="derectToMenuPage()"
-        />
+      />
     </ng-template>
     <ng-template #center>
-        <span><strong>History</strong></span>
+      <span><strong>History</strong></span>
     </ng-template>
     <ng-template #end> </ng-template>
-</p-toolbar>
-
+  </p-toolbar>
+</div>
 
 <app-loading [isLoading]="isLoading"></app-loading>
 <!-- Order History -->
-  <div *ngIf="!isLoading && orderHistory.length > 0">
-    <ng-container *ngFor="let order of orderHistory">
-      <app-order-history-card [order]="order"></app-order-history-card>
-    </ng-container>
-  </div>
-  
-  <!-- Pesan jika tidak ada data -->
-  <div *ngIf="!isLoading && orderHistory.length === 0">
-    <p>No orders found.</p>
-  </div>
+<div class="mt-5" *ngIf="!isLoading && orderHistory.length > 0">
+  <ng-container *ngFor="let order of orderHistory">
+    <app-order-history-card [order]="order"></app-order-history-card>
+  </ng-container>
+</div>
+
+<!-- Pesan jika tidak ada data -->
+<div *ngIf="!isLoading && orderHistory.length === 0">
+  <p>No orders found.</p>
+</div>
