@@ -1,0 +1,8 @@
+:{$PORT} {
+    root * /srv
+    file_server
+
+    # Agar aplikasi Angular berfungsi sebagai Single Page Application,
+    # pastikan semua rute yang tidak ada file-nya diarahkan ke index.html
+    try_files {path} /index.html
+}
