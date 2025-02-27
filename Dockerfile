@@ -7,7 +7,7 @@ RUN npm install
 # Salin seluruh source code
 COPY . .
 # Buat build produksi
-RUN npm run build --configuration production
+RUN npm run build
 
 # Stage 2: Serve file build dengan Caddy
 FROM caddy:alpine
