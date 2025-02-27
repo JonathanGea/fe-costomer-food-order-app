@@ -14,7 +14,7 @@ FROM caddy:alpine
 WORKDIR /app
 # Salin output build Angular ke direktori yang akan dilayani Caddy (default WORKDIR Caddy adalah /srv)
 # Ganti "nama-aplikasi" sesuai nama folder output di dist
-COPY --from=build /app/dist/fe-costomer-food-order-app /srv
+COPY --from=build /app/dist/fe-costomer /srv
 # Salin file konfigurasi Caddyfile
 COPY Caddyfile /etc/caddy/Caddyfile
 # Railway akan mengeset variabel lingkungan PORT, jadi gunakan itu di Caddyfile
