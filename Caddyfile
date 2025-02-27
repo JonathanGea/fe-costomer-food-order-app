@@ -1,5 +1,5 @@
 :80 {
-    root * /app/dist/my-angular-app
+    root * /app/dist/fe-costomer
     file_server
     try_files {path} /index.html
 }
