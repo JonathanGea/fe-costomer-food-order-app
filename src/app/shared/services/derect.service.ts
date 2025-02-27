@@ -12,8 +12,28 @@ export class DerectService {
   }
 
   toMenuPage() {
-    console.log("to menu page");
+    console.log('to menu page');
     this.router.navigate(['/']);
   }
+
+  toOrderSuccesPage() {
+    console.log('to menu page');
+    this.router.navigate(['/order/succes']);
+  }
+
+  refreshPage() {
+    this.router.navigate([this.router.url]).then(() => {
+      window.location.reload();
+    });
+  }
+
+  historyOrderPage() {
+    this.router.navigate(['/history']);
+  }
+
+  historyDetailPage(id: string) {
+    console.log('id :>> ', id);
+    this.router.navigate([`/history/${id}`]);
+  }
+  
 }
- 

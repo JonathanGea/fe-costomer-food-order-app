@@ -10,7 +10,8 @@ import { Product } from '../../core/models/product.model';
 })
 export class OrderService {
   private readonly apiUrl = environment.apiUrl + '/order';
-  private readonly STORAGE_KEY_ORDER = 'orders';
+  private readonly STORAGE_KEY_ORDER = 'order';
+  private readonly STORAGE_KEY_ORDERS = 'orders';
 
   order: Order = {
     id: 'null',
@@ -19,6 +20,8 @@ export class OrderService {
     createdAt: new Date(),
     productOrders: [],
   };
+
+  orders: Order[] | undefined;
 
   constructor(private readonly http: HttpClient) {
     const storedOrder = this.getOrder();
@@ -44,8 +47,13 @@ export class OrderService {
   }
 
   getOrder(): Order | null {
-    const storedOrders = localStorage.getItem(this.STORAGE_KEY_ORDER);
-    return storedOrders ? JSON.parse(storedOrders) : null;
+    const storedOrder = localStorage.getItem(this.STORAGE_KEY_ORDER);
+    return storedOrder ? JSON.parse(storedOrder) : null;
+  }
+
+  getOrders(): Order[] {
+    const storedOrders = localStorage.getItem(this.STORAGE_KEY_ORDERS);
+    return storedOrders ? JSON.parse(storedOrders) : [];
   }
 
   getProductOrder(): Product[] {
@@ -57,6 +65,57 @@ export class OrderService {
     localStorage.setItem(this.STORAGE_KEY_ORDER, JSON.stringify(order));
   }
 
+  doOrder() {
+    console.log('this :>> ', this);
+
+    // Ambil data dari STORAGE_KEY_ORDER
+    const storedOrder = localStorage.getItem(this.STORAGE_KEY_ORDER);
+    if (!storedOrder) {
+      console.error('No order found in STORAGE_KEY_ORDER');
+      return;
+    }
+
+    // Ambil data dari STORAGE_KEY_ORDERS
+    const storedOrders = localStorage.getItem(this.STORAGE_KEY_ORDERS);
+    let orders: Order[] = [];
+
+    try {
+      // Pastikan storedOrders adalah array
+      orders = storedOrders ? JSON.parse(storedOrders) : [];
+      if (!Array.isArray(orders)) {
+        console.error(
+          'Stored orders is not an array, resetting to empty array'
+        );
+        orders = [];
+      }
+    } catch (e) {
+      console.error(
+        'Failed to parse stored orders, resetting to empty array',
+        e
+      );
+      orders = [];
+    }
+
+    try {
+      // Parse storedOrder
+      const order: Order = JSON.parse(storedOrder);
+
+      // Generate random code and assign to order
+      order.code = "ABC" + this.generateRandomCode(7); // Generate a random code of length 10
+      order.totalPrice = this.getTotalPrice();
+      // Tambahkan order ke orders
+      orders.push(order);
+    } catch (e) {
+      console.error('Failed to parse stored order', e);
+      return;
+    }
+
+    // Simpan data storedOrders yang sudah diperbarui
+    localStorage.setItem(this.STORAGE_KEY_ORDERS, JSON.stringify(orders));
+
+    // Optional: Clear the current order after saving
+    localStorage.removeItem(this.STORAGE_KEY_ORDER);
+  }
   incrementQuantity(product: Product): void {
     if (!this.order?.productOrders) {
       console.error('Order or productOrders is undefined');
@@ -124,5 +183,16 @@ export class OrderService {
       }
     }
     return totalPrice;
+  }
+
+  generateRandomCode(length: number): string {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   }
 }

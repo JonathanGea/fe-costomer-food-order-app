@@ -5,10 +5,11 @@ import { Product } from '../../core/models/product.model';
 import { CartProductComponent } from './cart-product/cart-product.component';
 import { ImportsPrimengModule } from '../../shared/imports/imports-primeng';
 import { DerectService } from '../../shared/services/derect.service';
+import { OrderButtonComponent } from "../../shared/components/order-button/order-button.component";
 
 @Component({
   selector: 'app-cart',
-  imports: [CommonModule, CartProductComponent, ImportsPrimengModule],
+  imports: [CommonModule, CartProductComponent, ImportsPrimengModule, OrderButtonComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 })
