@@ -1,8 +1,8 @@
 [phases.setup]
-nixPkgs = ["caddy"]
+nixPkgs = ["nodejs", "caddy"]
 
 [phases.build]
-cmds = ["ng build --configuration=production"]
+cmds = ["npm install", "ng build --configuration=production"]
 
 [start]
 cmd = "caddy run --config /app/Caddyfile"
