@@ -1,4 +1,4 @@
-import { Product } from "./product.model";
+import { Product } from './product.model';
 
 export interface ProductOrder {
   id: string;
@@ -12,5 +12,11 @@ export interface Order {
   code: string;
   createdAt: Date;
   totalPrice: number;
+  tax: number;
+  subTotalPrice: number;
+  customerName: string;
+  type: string;
+  tableId: string;
+  adminId: string;
   productOrders: Product[];
 }

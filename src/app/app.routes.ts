@@ -17,8 +17,8 @@ export const routes: Routes = [
   { path: 'search', component: ProductSearchComponent },
   { path: 'cart', component: CartComponent },
   { path: 'order/succes', component: OrderSuccessComponent },
-  { path: 'order/id', component: OrderHistoryDetailComponent },
-  { path: 'history/id', component: OrderHistoryDetailComponent },
+  { path: 'order/:id', component: OrderHistoryDetailComponent },
+  { path: 'history/:id', component: OrderHistoryDetailComponent },
   {
     path: 'tedt',
     component: MenuComponent,

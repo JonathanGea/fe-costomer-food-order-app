@@ -19,7 +19,7 @@ export class OrderHistoryComponent implements OnInit {
   constructor(private readonly orderService: OrderService, private readonly router: Router) {}
   ngOnInit(): void {
     this.getOrderHistory();
-    console.log('this.orderHistory :>> ', this.orderHistory);
+    
   }
 
   getOrderHistory() {
@@ -33,4 +33,6 @@ export class OrderHistoryComponent implements OnInit {
   derectToMenuPage() {
     this.router.navigate(['/']);
   }
+
+  
 }

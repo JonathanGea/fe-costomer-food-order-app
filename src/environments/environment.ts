@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://food-order-appp-7cb59660b45c.herokuapp.com/api/v1'
+    apiUrl: 'https://food-orderback-end-production.up.railway.app/api/v1'
   };
