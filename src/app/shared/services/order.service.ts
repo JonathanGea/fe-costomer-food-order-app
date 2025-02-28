@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
-import { Order } from '../../core/models/order.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, Observable, throwError } from 'rxjs';
+import { Order, ProductOrder } from '../../core/models/order.model';
 import { Product } from '../../core/models/product.model';
 
 @Injectable({
@@ -17,6 +17,12 @@ export class OrderService {
     id: 'null',
     code: 'null',
     totalPrice: 0,
+    tax: 0,
+    subTotalPrice: 0,
+    customerName: "budiiiii",
+    type: "dine in",
+    tableId: "550e8400-e29b-41d4-a716-446655440000",
+    adminId: "660e8400-e29b-41d4-a716-446655440111",
     createdAt: new Date(),
     productOrders: [],
   };
@@ -28,22 +34,6 @@ export class OrderService {
     if (storedOrder) {
       this.order = storedOrder;
     }
-  }
-
-  getOrderHistoy(): Observable<Order[]> {
-    return this.http
-      .get<{
-        isSuccess: boolean;
-        data: Order[];
-        timestamp: string;
-        errors: any;
-      }>(this.apiUrl)
-      .pipe(
-        map((response) => {
-          console.log('Response received: ', response);
-          return response.data;
-        })
-      );
   }
 
   getOrder(): Order | null {
@@ -101,10 +91,14 @@ export class OrderService {
       const order: Order = JSON.parse(storedOrder);
 
       // Generate random code and assign to order
-      order.code = "ABC" + this.generateRandomCode(7); // Generate a random code of length 10
+      order.code = 'ABC' + this.generateRandomCode(7); // Generate a random code of length 10
+      const uuid = this.generateUUID();
+      console.log('uuid :>> ', uuid);
+      order.id = uuid;
       order.totalPrice = this.getTotalPrice();
       // Tambahkan order ke orders
-      orders.push(order);
+      orders.unshift(order);
+      this.submitOrder(order);
     } catch (e) {
       console.error('Failed to parse stored order', e);
       return;
@@ -186,13 +180,95 @@ export class OrderService {
   }
 
   generateRandomCode(length: number): string {
-    const characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let result = '';
     const charactersLength = characters.length;
     for (let i = 0; i < length; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
+  }
+
+  generateUUID(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+      const r = (Math.random() * 16) | 0; // Generate a random number between 0 and 15
+      const v = c === 'x' ? r : (r & 0x3) | 0x8; // For 'y', ensure the version is 4
+      return v.toString(16); // Convert to hexadecimal
+    });
+  }
+
+  // ----------------------------------------------------------------------------------------
+
+  getOrderHistoy(): Observable<Order[]> {
+    return this.http
+      .get<{
+        isSuccess: boolean;
+        data: Order[];
+        timestamp: string;
+        errors: any;
+      }>(this.apiUrl)
+      .pipe(
+        map((response) => {
+          console.log('Response received: ', response);
+          return response.data;
+        })
+      );
+  }
+
+  getDetailOrder(id: string): Observable<Order> {
+    return this.http
+      .get<{
+        isSuccess: boolean;
+        data: Order;
+        timestamp: string;
+        errors: any;
+      }>(`${this.apiUrl}/${id}`) // Corrected URL concatenation
+      .pipe(
+        map((response) => {
+          console.log('Response received: ', response);
+          return response.data;
+        }),
+        catchError((error) => {
+          console.error('Error occurred while fetching order details:', error);
+          return throwError(error); // Handle the error appropriately
+        })
+      );
+  }
+
+  submitOrder(order : Order): void {
+    this.insertOrder(order).subscribe({
+      next: (orderData) => {
+        console.log('Order successfully inserted:', orderData);
+        // Additional logic after successful order insertion
+      },
+      error: (error) => {
+        console.error('Failed to insert order:', error);
+        // Handle errors here, such as showing an error message to the user
+      },
+    });
+  }
+  insertOrder(order: Order): Observable<Order> {
+    console.log('order :>> ', order);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    return this.http
+      .post<{
+        isSuccess: boolean;
+        data: Order;
+        timestamp: string;
+        errors: any;
+      }>(this.apiUrl, order, { headers })
+      .pipe(
+        map((response) => {
+          console.log('Response received: ', response);
+          return response.data;
+        }),
+        catchError((error) => {
+          console.error('Error occurred while fetching order details:', error);
+          return throwError(error); // Handle the error appropriately
+        })
+      );
   }
 }

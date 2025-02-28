@@ -59,11 +59,11 @@ export class OrderButtonComponent {
     this.orderService.doOrder();
     this.isloading = true;
 
-    timer(1000).subscribe(() => {
-      this.derect.refreshPage()
+    // timer(1000).subscribe(() => {
+    //   this.derect.refreshPage()
       
-      // Delay 5 seconds
-      this.derect.toOrderDetailPage('id');
-    });
+    //   // Delay 5 seconds
+    //   this.derect.toOrderDetailPage('id');
+    // });
   }
 }

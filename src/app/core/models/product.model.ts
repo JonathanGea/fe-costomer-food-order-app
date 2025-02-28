@@ -8,4 +8,5 @@ export interface Product {
   categoryId: string;
   isActivated: boolean;
   quantity: number;
+  subTotalPrice:number;
 }
